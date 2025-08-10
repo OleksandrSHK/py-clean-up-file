@@ -1,4 +1,5 @@
 import os
+from typing import Optional, Type, Any
 
 
 class CleanUpFile:
@@ -11,6 +12,8 @@ class CleanUpFile:
         self.file = open(self.filename, self.mode)
         return self
 
-    def __exit__(self, exc_type, exc_val, exc_tb) -> None:
+    def __exit__(self, exc_type: Optional[Type[BaseException]],
+                 exc_val: Optional[BaseException],
+                 exc_tb: Type[Any]) -> None:
         self.file.close()
         os.remove(self.filename)
